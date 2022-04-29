@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            color: green;
+        }
+    </style>
+</head>
+<body>
+    <h1>Backend</h1>
+    <form id = "investorForm">
+        <input id = "imgURL" type = "text" placeholder = "Paste the investor image url"/>
+        <input id = "name" type = "text" placeholder = "Enter investor's name"/>
+        <input id = "role" type = "text" placeholder = "Enter investor's role"/>
+        <input id = "companyLogo" type = "text" placeholder = "Paste the company logo url"/>
+        <input type = "submit"/>
+    </form>
+    <div></div>
+</body>
+
+<script>
+    document.querySelector("#investorForm").addEventListener("submit", data);
+
+    var investorArr = JSON.parse(localStorage.getItem("investorData")) || [];
+
+    function data(){
+        event.preventDefault();
+        document.querySelector("div").innerText = "Submitted Successfully";
+        
+        var investorObj = {
+            investorImage: investorForm.imgURL.value,
+            investorName: investorForm.name.value,
+            investorRole: investorForm.role.value,
+            investorCompanyLogo: investorForm.companyLogo.value
+        }
+        // console.log(obj);
+        investorArr.push(investorObj);
+        console.log(investorArr);
+        localStorage.setItem("investorData", JSON.stringify(investorArr));
+    }
+</script>
+</html>
