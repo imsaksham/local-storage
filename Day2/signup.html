@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            border: 0px solid red;
+            border-radius: 15px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            height: 550px;
+            width: 35%;
+            margin: auto;
+        }
+        #basicForm{
+            border: 0px solid red;
+            display:flex;
+            flex-direction: column;
+            padding: 30px;
+            /* grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(1, auto); */
+            
+        }
+        #basicForm>:nth-child(4){
+            text-align: center;
+        }
+        #heading{
+            display: flex;
+            justify-content: center;
+        }
+        #container>h1{
+            display: flex;
+            padding-top: 20px;
+            justify-content: center;
+        }
+        #container>div{
+            display: flex;
+            justify-content: center;
+            margin-top: -25px;
+            cursor: pointer;
+        }
+        input{
+            padding: 10px 0px;
+            padding-left: 10px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid slategrey;
+        }
+    </style>
+</head>
+<body>
+    <div id = "heading">
+        <img src = "https://sso.masaischool.com/brand_dark.svg"/>
+    </div>
+    <div id = "container">
+        <h1>Sign Up</h1>
+        <form id = "basicForm">
+            <div>
+                <label for = "">Email</label><br>
+                <input id = "email" type = "text" placeholder = "Enter email"/><br><br>
+            </div>
+            <div>
+                <label for = "">Phone number</label><br>
+                <input id = "number" type = "number" placeholder = "Enter your phone number"/><br><br>
+            </div>
+            <div>
+                <label for = "">Password</label><br>
+                <input id = "password" type = "password" placeholder = "Enter password"/><br><br>
+            </div>
+            <div>By signing up, I accept the Masai School
+                <span>
+                    <a rel="noreferrer" target="_blank" href="https://masaischool.com/terms" class="">Terms of Service</a>
+                </span>
+                and acknowledge the
+                <span>
+                    <a rel="noreferrer" target="_blank" href="https://masaischool.com/privacy">Privacy Policy</a>
+                </span>
+            </div><br><br>
+            <input type = "submit" value = "SIGN UP"/><br><br>
+        </form>
+        <div>Already have an account?
+            <a>Sign In</a></div>
+    </div>
+</body>
+
+<script>
+    document.querySelector("#basicForm").addEventListener("submit", registrationData);
+
+    var referSignUp = document.querySelector("div>a");
+    referSignUp.href = "login.html";
+
+    function registrationData(){
+        event.preventDefault();
+
+        var formData = [];
+
+        var formObj = {
+            email: basicForm.email.value,
+            mobile: basicForm.number.value,
+            password: basicForm.password.value
+        }
+        formData.push(formObj);
+
+        localStorage.setItem("registrationData", JSON.stringify(formData));
+        window.location.href = "login.html";
+    }
+</script>
+</html>

@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            border: 0px solid red;
+            border-radius: 15px;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            height: 550px;
+            width: 35%;
+            margin: auto;
+        }
+        #basicForm{
+            border: 0px solid red;
+            display:flex;
+            flex-direction: column;
+            padding: 30px;
+            /* grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(1, auto); */
+            
+        }
+        #heading{
+            display: flex;
+            justify-content: center;
+        }
+        #container>h1{
+            display: flex;
+            padding-top: 20px;
+            justify-content: center;
+        }
+        #container>div{
+            display: flex;
+            justify-content: center;
+            margin-top: -25px;
+            cursor: pointer;
+        }
+        input{
+            padding: 10px 0px;
+            padding-left: 10px;
+            width: 100%;
+            border-radius: 8px;
+            border: 1px solid slategrey;
+        }
+    </style>
+</head>
+<body>
+    <div id = "heading">
+        <img src = "https://sso.masaischool.com/brand_dark.svg"/>
+    </div>
+    <div id = "container">
+        <h1>Sign In</h1>
+        <form id = "basicForm">
+            <div>
+                <label for = "">Email</label><br>
+                <input id = "email" type = "text" placeholder = "Enter email"/><br><br>
+            </div>
+            <div>
+                <label for = "">Password</label><br>
+                <input id = "password" type = "password" placeholder = "Enter password"/><br><br>
+            </div>
+            <input type = "submit" value = "SIGN IN"/><br><br>
+        </form>
+        <div>Don't have an account?
+            <a>Sign Up</a></div>
+    </div>
+</body>
+
+<script>
+    document.querySelector("#basicForm").addEventListener("submit", loginForm);
+    
+    var signupObjData = JSON.parse(localStorage.getItem("registrationData"));
+
+    var referSignUp = document.querySelector("a");
+    referSignUp.href = "index.html";
+    
+    function loginForm(){
+        event.preventDefault();
+
+        // var loginData = [];
+
+        var loginObj = {
+            email: basicForm.email.value,
+            password: basicForm.password.value
+        }
+
+        // loginData.push(loginObj);
+        //console.log(loginData);
+
+
+        
+        // if (signupObjData === null){
+        //     alert("Please register yourself first and try again");
+        // }
+        if (signupObjData.email === loginObj.email && signupObjData.password === loginObj.password){
+            alert("Signed in successfully");
+            localStorage.setItem("login", JSON.stringify(signupObjData));
+        }
+        else{
+            alert("Your email and password does not match with our records.");
+        }
+    }
+    // checkCredentials(loginData);
+
+    // function checkCredentials(data){
+    //     data.forEach(function(elem, index){
+    //         if (elem.email == )
+    //     })
+    // }
+</script>
+</html>
